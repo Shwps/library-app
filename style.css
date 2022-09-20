@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&display=swap");
+
+body,
+html {
+  margin: 0;
+  height: 100vh;
+}
+
+* {
+  color: white;
+  font-family: Fira Sans;
+}
+
+header {
+  background-color: #1e1f35;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  box-shadow: 0px 2px 8px 2px #000000;
+  z-index: 1;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.greater-container {
+  background-color: lightsalmon;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+  height: 100%;
+}
+
+.library-container {
+  background-color: #0f101f;
+  grid-area: 2 / 1 / 3 / 2;
+  padding: 3rem;
+  gap:2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.card {
+  font-size: 18px;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: solid 1rem #363636;
+}
+
+.new-book-modal.card {
+  width: 25vw;
+  margin: 15% auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#new-book-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input-field {
+    display: grid;
+}
+
+input[type="text"]{
+    box-sizing: border-box;
+    margin-top: 6px;
+    width:250px;
+    padding:6px;
+    background-color: #393944;
+    border: none;
+    box-shadow: 1px 1px 8px 2px #393944;
+    outline: none;
+}
+
+input[type="text"]:focus{
+    background-color: #3b3b50;
+}
+
+#exit-btn {
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
+ border: none;
+ background-color: #393944 ;   
+}
+
+
+
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+  border-bottom: solid 1rem rgb(73, 100, 219);
+}
+
+.title {
+  font-weight: 500;
+}
+
+
+#new-book-btn {
+  font-weight: 600;
+  font-size: 1em;
+  padding: 1rem;
+  width: clamp(150px, 25%, 300px);
+  background-color: #242424;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0px 2px 3px 1px rgb(73, 100, 219);
+}
