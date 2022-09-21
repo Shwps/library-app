@@ -97,7 +97,6 @@ input[type="text"]:focus{
 
 
 #modal {
-  display: none;
   position: fixed;
   z-index: 2;
   left: 0;

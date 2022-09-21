@@ -14,17 +14,6 @@ function Book(title, author, pages, read) {
   };
 }
 
-function addBookToLibrary() {
-  let title = prompt("Title of the book");
-  let author = prompt("Author of book");
-  let pages = prompt("How many pages does the book contain");
-  let read = new Boolean(
-    prompt("have you read this book, answer with true or false")
-  );
-
-  myLibrary.push(new Book(title, author, pages, read));
-}
-
 //new book button and form funcitonality
 
 const newBookBtn = document.getElementById("new-book-btn");
@@ -40,9 +29,17 @@ addBookBtn.addEventListener("click", () => {
   displayModal();
 });
 
+function haveReadPropertyChange(e) {
+  let card = e.target.parentElement.parentElement;
+  let boxValue = e.target.checked;
+  let book = myLibrary[card.dataset.bookIndex];
+  book.read = boxValue;
+}
+
 //Displaying a new book
 function displayBook(book) {
   let card = document.createElement("div");
+  card.dataset.bookIndex = myLibrary.length - 1;
 
   const title = document.createElement("div");
   title.classList.add("title");
@@ -60,8 +57,23 @@ function displayBook(book) {
   pages.appendChild(textNode);
 
   const read = document.createElement("div");
+  const haveReadCheckbox = document.createElement("input");
+  haveReadCheckbox.type = "checkbox";
+  haveReadCheckbox.name = "have-read";
+  haveReadCheckbox.value = "true";
+  haveReadCheckbox.id = "have-read";
+  haveReadCheckbox.classList.add("have-read");
+  if (book.read === true) {
+    haveReadCheckbox.checked = true;
+    textNode = document.createTextNode(`Have read`);
+  } else {
+    textNode = document.createTextNode(`Haven't read`);
+  }
+
+  haveReadCheckbox.addEventListener("change", haveReadPropertyChange);
+
+  read.appendChild(haveReadCheckbox);
   read.classList.add("read-status");
-  textNode = document.createTextNode(`${book.read}`);
   read.appendChild(textNode);
 
   card.append(title, author, pages, read);
@@ -79,14 +91,15 @@ function retrivingBookInfo() {
   const title = document.getElementById("new-book-title").value;
   const author = document.getElementById("new-book-author").value;
   const pages = parseInt(document.getElementById("new-book-pages").value);
-  let read = document.getElementById("new-book-title").value;
-  if (read === "true") {
-    read = true;
-  } else {
-    read = false;
-  }
+  let read = document.getElementById("new-book-read").checked;
 
   return new Book(title, author, pages, read);
+}
+
+function displayBooksInArray() {
+  for (const book of myLibrary) {
+    displayBook(book);
+  }
 }
 
 function displayModal() {
@@ -100,4 +113,5 @@ function displayModal() {
 window.addEventListener("load", () => {
   let bookOne = new Book("Boken", "Boksson", 299, false);
   myLibrary.push(bookOne);
+  displayBooksInArray();
 });
