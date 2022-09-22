@@ -71,7 +71,7 @@ header {
     display: grid;
 }
 
-input[type="text"]{
+input[type="text"], input[type="number"]{
     box-sizing: border-box;
     margin-top: 6px;
     width:250px;
@@ -82,8 +82,8 @@ input[type="text"]{
     outline: none;
 }
 
-input[type="text"]:focus{
-    background-color: #3b3b50;
+input[type="text"]:focus, input[type="number"]:focus{
+    background-color: #4d4d7a;
 }
 
 #exit-btn {
@@ -91,7 +91,9 @@ input[type="text"]:focus{
  height: 60px;
  border-radius: 50%;
  border: none;
- background-color: #393944 ;   
+ background-color: #8f323e ;
+ font-size: 36px;
+ font-weight: 700; 
 }
 
 
@@ -127,6 +129,6 @@ input[type="text"]:focus{
   cursor: pointer;
 }
 
-button:hover {
+#new-book-btn:hover {
   box-shadow: 0px 2px 3px 1px rgb(73, 100, 219);
 }

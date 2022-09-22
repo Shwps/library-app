@@ -12,6 +12,12 @@ function Book(title, author, pages, read) {
       return `${title} by ${author}, ${pages} pages, not yet read.`;
     }
   };
+  
+  function toggleRead(readStatus) {
+    if (typeof readStatus === "boolean") {
+      this.read = readStatus;
+    }
+  }
 }
 
 //new book button and form funcitonality
@@ -29,11 +35,17 @@ addBookBtn.addEventListener("click", () => {
   displayModal();
 });
 
-function haveReadPropertyChange(e) {
+function setReadProperty(e) {
   let card = e.target.parentElement.parentElement;
   let boxValue = e.target.checked;
   let book = myLibrary[card.dataset.bookIndex];
-  book.read = boxValue;
+  book.toggleRead(boxValue);
+  let readStatusText = card.querySelector(".read-status-text");
+  if (boxValue) {
+    readStatusText.innerHTML = "Have read";
+  } else {
+    readStatusText.innerHTML = "Haven't read";
+  }
 }
 
 //Displaying a new book
@@ -58,6 +70,9 @@ function displayBook(book) {
 
   const read = document.createElement("div");
   const haveReadCheckbox = document.createElement("input");
+  const readStatusText = document.createElement("p");
+  readStatusText.classList.add("read-status-text");
+
   haveReadCheckbox.type = "checkbox";
   haveReadCheckbox.name = "have-read";
   haveReadCheckbox.value = "true";
@@ -70,11 +85,12 @@ function displayBook(book) {
     textNode = document.createTextNode(`Haven't read`);
   }
 
-  haveReadCheckbox.addEventListener("change", haveReadPropertyChange);
+  haveReadCheckbox.addEventListener("change", setReadProperty);
 
+  readStatusText.appendChild(textNode);
   read.appendChild(haveReadCheckbox);
+  read.appendChild(readStatusText);
   read.classList.add("read-status");
-  read.appendChild(textNode);
 
   card.append(title, author, pages, read);
   card.classList.add("card");
