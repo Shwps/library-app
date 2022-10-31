@@ -1,0 +1,20 @@
+En portofolio hemsida
+
+MEDIATE eller MEDIATED.net
+
+en sajt där du kan samla "intresseobjekt"
+
+Using tags for both types of media and for activities or genre.
+
+
+Functionality:
+    genres are overlapping. So even though horror is primarly marked as a movie/book genre it can be added to other genres as well.
+
+
+
+
+Tagsfield: 
+    Functionality:
+        Inputfield where you add tags for the book you are adding.
+        These tags are then added to an array stored in the book object.
+        Pressing enter while having the field selected should add the tag

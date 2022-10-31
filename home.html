@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>ARKIV</title>
+</head>
+<body>
+    <div class="greater-container">
+      <header>
+        <h1>|ARKIV|</h1>
+          <input type="text" id="search-bar">
+        <div class="search-tags"></div>
+      </header>
+      <main>
+            <div class="library-container">
+            </div>
+                <button id="new-book-btn">+</button>
+      </main>
+    </div>
+    <div id="modal" style="display:none;">
+        <div class="new-book-modal">
+            <form id="new-book-form">
+              <h1>NEW BOOK</h1>
+            
+              <div class="input-field">
+                
+                <input type="text" id="new-book-title" placeholder=" "/>
+                <label for="new-book-title" class="placeholder title-label">Title</label>
+              </div>
+              <div class="input-field">
+                  <input type="text" id="new-book-author" placeholder=" "/>
+                  <label for="new-book-author" class="placeholder author-label">Author</label>
+              </div>
+              <div class="input-field year-and-read">
+                  <input type="number" id="new-book-year" placeholder=" "/>
+                  <label for="new-book-year" class="placeholder year-label">Year</label>
+                  <div class="new-book-read-container"><label for="new-book-read" id="read-label">Read</label><input type="checkbox" id="new-book-read" value="true" /></div>
+              </div>
+              
+              <div class="tags-container input-field">
+                <input type="text" id="tag-input" placeholder=" "/>
+                <label for="tag-input" class="placeholder tags-label">Tags</label>
+                <div class="tags">
+                </div>
+              </div>
+              
+              <div class="form-buttons">
+                <button type="reset" id="add-book-btn" class="btn">Add</button>
+                <button type="button" id="exit-btn" class="btn">Cancel</button>
+            </div>
+            </form>
+          </div>
+    </div>
+  </body>
+</html>
