@@ -113,8 +113,10 @@ function addBook() {
   myLibrary.push(book);
   localStorage.setItem("library", JSON.stringify(myLibrary));
   card(book);
-  newBookTags.splice(0, newBookTags.length);
+  newBookTags.splice(0,newBookTags.length);
+  clearChildren(tagsContainer);
   displaySearchTags();
+  displayModal()
 }
 
 function clearChildren(parent) {

@@ -389,7 +389,7 @@ input:not(:placeholder-shown) ~ .placeholder {
   line-height: normal;
   margin: 0;
   min-height: 50px;
-  min-width: 0;
+  max-width: 120px;
   outline: none;
   padding: 16px;
   text-align: center;
