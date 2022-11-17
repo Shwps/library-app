@@ -3,7 +3,7 @@ const newBookTags = [];
 const searchTags = [];
 const selectedSearchTags = [];
 
-let book = (title, author, year, read, tags, card) => {
+let book = (title, author, year, read, tags) => {
   let toggleRead = (readStatus) => {
     if (typeof readStatus === "boolean") {
       this.read = readStatus;
@@ -113,10 +113,10 @@ function addBook() {
   myLibrary.push(book);
   localStorage.setItem("library", JSON.stringify(myLibrary));
   card(book);
-  newBookTags.splice(0,newBookTags.length);
+  newBookTags.splice(0, newBookTags.length);
   clearChildren(tagsContainer);
   displaySearchTags();
-  displayModal()
+  displayModal();
 }
 
 function clearChildren(parent) {
@@ -131,7 +131,7 @@ function displayBooksInArray() {
   for (const book of myLibrary) {
     card(book);
     for (const tag of book.tags) {
-      if(!searchTags.includes(tag)){
+      if (!searchTags.includes(tag)) {
         searchTags.push(tag);
       }
     }
@@ -204,7 +204,7 @@ function displaySearchTags() {
 }
 
 searchTagsElement.addEventListener("click", (e) => {
-  if(!e.target.classList.contains("tag")){
+  if (!e.target.classList.contains("tag")) {
     return;
   }
 
@@ -212,18 +212,18 @@ searchTagsElement.addEventListener("click", (e) => {
   const tagText = tag.textContent;
   tag.classList.toggle("selected");
   selectedSearchTags.includes(tagText)
-    ? selectedSearchTags.splice(selectedSearchTags.indexOf(tagText))
+    ? selectedSearchTags.splice(selectedSearchTags.indexOf(tagText),1)
     : selectedSearchTags.push(tagText);
   myLibrary.forEach((book) => {
     let counter = 0;
-    for(let selectedTag of selectedSearchTags){
-      if(book.tags.includes(selectedTag)){
+    for (let selectedTag of selectedSearchTags) {
+      if (book.tags.includes(selectedTag)) {
         counter++;
       }
     }
-    let isVisible = (counter == selectedSearchTags.length)
-    book.card.classList.toggle("hide", !isVisible)
-});
+    let isVisible = counter == selectedSearchTags.length;
+    book.card.classList.toggle("hide", !isVisible);
+  });
 });
 
 function retrivingBookInfo() {
@@ -269,4 +269,18 @@ window.addEventListener("load", () => {
   // }
   displayBooksInArray();
   displaySearchTags();
+});
+
+const demoBtn = document.getElementById("demo");
+demoBtn.addEventListener("click", () => {
+  fetch("./demo.json")
+    .then(function(resp){
+      return resp.json();
+    })
+    .then(function(data){
+       myLibrary = JSON.parse(data);
+       localStorage.setItem("library", JSON.stringify(myLibrary))
+      displayBooksInArray();
+      displaySearchTags();
+    })
 });
