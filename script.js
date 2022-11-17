@@ -273,7 +273,7 @@ window.addEventListener("load", () => {
 
 const demoBtn = document.getElementById("demo");
 demoBtn.addEventListener("click", () => {
-  fetch("./demo.json")
+  fetch("./demo2.json")
     .then(function(resp){
       return resp.json();
     })
