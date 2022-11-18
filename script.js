@@ -1,4 +1,4 @@
-let myLibrary;
+let myLibrary = [];
 const newBookTags = [];
 const searchTags = [];
 const selectedSearchTags = [];
@@ -271,14 +271,16 @@ window.addEventListener("load", () => {
   displaySearchTags();
 });
 
-const demoBtn = document.getElementById("demo");
+const demoBtn = document.getElementById("demo-btn");
 demoBtn.addEventListener("click", () => {
+  if(!confirm("This will add 15 books to your library")) return
   fetch("./demo2.json")
     .then(function(resp){
       return resp.json();
     })
     .then(function(data){
-       myLibrary = JSON.parse(data);
+      let demoLibrary = JSON.parse(data);
+       myLibrary.push.apply(myLibrary,demoLibrary);
        localStorage.setItem("library", JSON.stringify(myLibrary))
       displayBooksInArray();
       displaySearchTags();
