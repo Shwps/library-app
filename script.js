@@ -16,7 +16,7 @@ let book = (title, author, year, read, tags) => {
 //new book button and form funcitonality
 
 const newBookBtn = document.getElementById("new-book-btn");
-const modal = document.getElementById("modal");
+const modal = document.getElementById("new-book-modal");
 const exitBtn = document.getElementById("exit-btn");
 const libraryContainer = document.querySelector(".library-container");
 const addBookBtn = document.querySelector("#add-book-btn");
@@ -95,11 +95,24 @@ let card = (book) => {
     bookTags.appendChild(tagElement);
   }
 
+  card.onmousemove = (e) => handleOnMouseMove(e);
+
   card.append(edit, title, author, year, read, bookTags);
   card.classList.add("card");
   libraryContainer.appendChild(card);
   book.card = card;
 };
+
+const handleOnMouseMove = e => {
+  const { currentTarget: target} = e;
+
+  const rect = target.getBoundingClientRect(),
+  x = e.clientX - rect.left,
+  y = e.clientY - rect.top;
+
+target.style.setProperty("--mouse-x", `${x}px`);
+target.style.setProperty("--mouse-y", `${y}px`);
+}
 
 function removeBook(book) {
   myLibrary.splice(myLibrary.indexOf(book), 1);
@@ -180,7 +193,9 @@ tagInput.addEventListener("keydown", (e) => {
 });
 
 const searchBar = document.querySelector("#search-bar");
-const searchTagsElement = document.querySelector(".search-tags");
+const searchTagsContainer = document.querySelector(".search-tags");
+const toggleTags = document.querySelector("#toggle-tags");
+let isTagsShowing = false;
 const SearchTagsArray = [];
 
 searchBar.addEventListener("input", (e) => {
@@ -193,17 +208,42 @@ searchBar.addEventListener("input", (e) => {
   });
 });
 
+toggleTags.addEventListener("click", (e) => {
+  const searchTags = searchTagsContainer.childNodes;
+  if (isTagsShowing) {
+    for (let tag of searchTags) {
+      if (Array.from(searchTags).indexOf(tag) >= 13) {
+        tag.style.display = "none";
+      }
+    }
+    toggleTags.style.transform = "rotate(0deg)";
+    isTagsShowing = false;
+  } else {
+    for (let tag of searchTags) {
+      tag.style.display === "none"
+        ? (tag.style.display = "block")
+        : (tag.style.display = "block");
+    }
+    toggleTags.style.transform = "rotate(180deg)";
+    isTagsShowing = true;
+  }
+});
+
 function displaySearchTags() {
-  clearChildren(searchTagsElement);
+  clearChildren(searchTagsContainer);
+  searchTags.sort();
   for (const tag of searchTags) {
     let tagElement = document.createElement("div");
     tagElement.classList.add("tag", "search-tag");
     tagElement.appendChild(document.createTextNode(tag));
-    searchTagsElement.append(tagElement);
+    if (searchTagsContainer.childNodes.length > 14) {
+      tagElement.style.display = "none";
+    }
+    searchTagsContainer.append(tagElement);
   }
 }
 
-searchTagsElement.addEventListener("click", (e) => {
+searchTagsContainer.addEventListener("click", (e) => {
   if (!e.target.classList.contains("tag")) {
     return;
   }
@@ -212,7 +252,7 @@ searchTagsElement.addEventListener("click", (e) => {
   const tagText = tag.textContent;
   tag.classList.toggle("selected");
   selectedSearchTags.includes(tagText)
-    ? selectedSearchTags.splice(selectedSearchTags.indexOf(tagText),1)
+    ? selectedSearchTags.splice(selectedSearchTags.indexOf(tagText), 1)
     : selectedSearchTags.push(tagText);
   myLibrary.forEach((book) => {
     let counter = 0;
@@ -273,16 +313,16 @@ window.addEventListener("load", () => {
 
 const demoBtn = document.getElementById("demo-btn");
 demoBtn.addEventListener("click", () => {
-  if(!confirm("This will add 15 books to your library")) return
+  if (!confirm("This will add 16 books to your library")) return;
   fetch("./demo2.json")
-    .then(function(resp){
+    .then(function (resp) {
       return resp.json();
     })
-    .then(function(data){
+    .then(function (data) {
       let demoLibrary = JSON.parse(data);
-       myLibrary.push.apply(myLibrary,demoLibrary);
-       localStorage.setItem("library", JSON.stringify(myLibrary))
+      myLibrary.push.apply(myLibrary, demoLibrary);
+      localStorage.setItem("library", JSON.stringify(myLibrary));
       displayBooksInArray();
       displaySearchTags();
-    })
+    });
 });

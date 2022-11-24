@@ -12,9 +12,9 @@
     <div class="greater-container">
       <header>
         <h1>|ARKIV|</h1>
-          <input type="text" id="search-bar">
+          <input type="text" id="search-bar" placeholder="Search">
           
-        <div class="search-tags"></div>
+        <div class="tags-wrapper"><div class="search-tags"></div><img id="toggle-tags"src="svg/chevron-down.svg" width="64px" alt="" srcset=""></div>
       </header>
       <main>
             <div class="library-container">
@@ -23,8 +23,7 @@
                 <button id="new-book-btn">+</button>
       </main>
     </div>
-    <div id="modal" style="display:none;">
-        <div class="new-book-modal">
+        <div id="new-book-modal" style="display:none;">
             <form id="new-book-form">
               <h1>NEW BOOK</h1>
             
@@ -56,6 +55,5 @@
             </div>
             </form>
           </div>
-    </div>
   </body>
 </html>
