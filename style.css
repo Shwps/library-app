@@ -231,8 +231,8 @@ h1 {
   font-size: 18px;
   background-color: rgba(255, 255, 255, 0.02);
   padding: 1rem;
-  border-radius: 5px 5px 5px 5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   min-height: 240px;
 }
@@ -252,7 +252,6 @@ h1 {
     left: 0px;
     top: 0px;
     transition: opacity 500ms;
-    z-index: 2;
 }
 
 .card:hover::before {
@@ -302,8 +301,8 @@ h1 {
   border: solid 3px var(--c-gray-4);
   box-shadow: 1px 1px 5px 2px var(--c-gray-1);
   position: fixed;
-  bottom: 80px;
-  right: 80px;
+  bottom: 90px;
+  right: 20px;
 }
 
 #new-book-form {
