@@ -142,6 +142,7 @@ table {
   --c-yellow-1: #ffbe0b;
   --c-green-1: #3b8026;
   --c-red-1: #e93232;
+  --filter-white: invert(100%) sepia(98%) saturate(232%) hue-rotate(180deg) brightness(113%) contrast(87%);
 }
 
 body,
@@ -184,6 +185,16 @@ h1 {
   background-color: var(--c-light-1);
 }
 
+#logo {
+  margin-left: 2rem;
+}
+
+#toggle-tags {
+  cursor: pointer;
+  filter:var(--filter-white);
+  transition: 0.5s;
+}
+
 .tags-wrapper {
   grid-area: 2 / 2 / 2 / 3;
   display: flex;
@@ -203,12 +214,7 @@ h1 {
   margin-top: 1em;
 }
 
-#toggle-tags {
-  cursor: pointer;
-  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(281deg)
-    brightness(103%) contrast(106%);
-  transition: 0.5s;
-}
+
 
 .header-buttons {
   display: flex;
@@ -292,11 +298,16 @@ h1 {
   display: flex;
 }
 
+.info-container {
+  z-index: 1;
+}
+
 .book-tags {
   grid-area: 2 / 1 / 3 / 3;
   gap: 6px;
   display: flex;
   flex-wrap: wrap;
+  align-self: start;
 }
 
 #new-book-modal {
@@ -365,7 +376,8 @@ input[type="number"] {
 
 input:focus ~ .placeholder,
 input:not(:placeholder-shown) ~ .placeholder {
-  transform: translateY(-30px) translateX(0);
+  transform: translateY(-30px) translateX(0);font-size: 18px;
+  
 }
 
 .placeholder {
@@ -424,8 +436,7 @@ input:not(:placeholder-shown) ~ .placeholder {
   margin-left:1em;
   height: auto;
   cursor: pointer;
-  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(281deg)
-    brightness(103%) contrast(106%);
+  filter:var(--filter-white);
 }
 
 .title {
@@ -464,12 +475,6 @@ input:not(:placeholder-shown) ~ .placeholder {
 }
 
 #new-book-btn {
-  font-weight: 600;
-  font-size: 4em;
-  color: #0a0a0a;
-  background-color: var(--c-light-1);
-  border: none;
-  border-radius: 50%;
   cursor: pointer;
   position: fixed;
   bottom: 20px;
@@ -477,10 +482,8 @@ input:not(:placeholder-shown) ~ .placeholder {
   z-index: 100;
   width: 50px;
   height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: 0.5s;
+  filter:var(--filter-white);
 }
 
 #demo-btn {
@@ -488,9 +491,21 @@ input:not(:placeholder-shown) ~ .placeholder {
   bottom: 20px;
   right: 80px;
   z-index: 100;
+  background: none;
+	color: inherit;
+	border: 4px solid var(--c-light-1);
+  border-radius: 5px;
+	padding: 4px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-size: 2rem;
+  font-weight: 600;
+  transition: 0.5s;
 }
 
-#new-book-btn:hover {
+#new-book-btn:hover,
+#demo-btn:hover {
   transform: scale(1.1);
 }
 
@@ -552,30 +567,24 @@ input:not(:placeholder-shown) ~ .placeholder {
     gap: 1em;
   }
 
+  #logo {
+    margin-left: 0rem;
+  }
+
+  .info-container {
+    margin-bottom: 1rem;
+  }
+
   .library-container {
     padding: 0rem;
-    gap: 2rem;
-    display: grid;
+    gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-auto-rows: 1fr;
     height: 90vh;
   }
 
   main {
     display: flex;
     justify-content: center;
-
-  }
-
-  .card {
-    font-size: 18px;
-    background-color: rgba(255, 255, 255, 0.02);
-    padding: 1rem;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    min-height: 150px;
   }
   
 }
