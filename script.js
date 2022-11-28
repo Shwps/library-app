@@ -41,6 +41,8 @@ function setReadProperty(e) {
 let card = (book) => {
   let card = document.createElement("div");
   card.dataset.bookIndex = myLibrary.indexOf(book);
+  const infoContainer = document.createElement("div");
+  infoContainer.classList.add("info-container");
 
   const edit = document.createElement("img");
   edit.classList.add("edit-btn");
@@ -96,8 +98,10 @@ let card = (book) => {
   }
 
   card.onmousemove = (e) => handleOnMouseMove(e);
-
-  card.append(edit, title, author, year, read, bookTags);
+  
+  infoContainer.append(title,author,year,read)
+  
+  card.append(infoContainer,edit, bookTags);
   card.classList.add("card");
   libraryContainer.appendChild(card);
   book.card = card;
