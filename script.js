@@ -29,10 +29,9 @@ addBookBtn.addEventListener("click", () => {
 });
 
 function setReadProperty(e) {
-  let card = e.target.parentElement.parentElement;
+  let card = e.target.parentElement.parentElement.parentElement;
   let boxValue = e.target.checked;
   let book = myLibrary[card.dataset.bookIndex];
-  console.log(book);
   book.read = boxValue;
   localStorage.setItem("library", JSON.stringify(myLibrary));
 }
