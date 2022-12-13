@@ -172,6 +172,15 @@ h1 {
   font-size: 32px;
 }
 
+#add-tag {
+  font-size: 16px;
+  color:var(--c-orange-1);
+  font-weight: 500;
+  outline: none;
+  border: solid 2px rgba(0, 0, 0, 0);
+  border-radius: 5px;
+}
+
 #search-bar {
   font-size: 18px;
   color: var(--c-gray-1);
@@ -193,6 +202,9 @@ h1 {
   transition: 0.5s;
 }
 
+#tag-input {
+}
+
 .tags-wrapper {
   grid-area: 2 / 2 / 2 / 3;
   display: flex;
@@ -200,6 +212,12 @@ h1 {
   align-items: center;
   width: 100%;
   max-width: 800px;
+}
+
+.tags-input-wrapper {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 6px;
 }
 
 .search-tags {
@@ -211,8 +229,6 @@ h1 {
   min-height: 3rem;
   margin-top: 1em;
 }
-
-
 
 .header-buttons {
   display: flex;
@@ -321,8 +337,8 @@ h1 {
   border: solid 3px var(--c-gray-4);
   box-shadow: 1px 1px 5px 2px var(--c-gray-1);
   position: fixed;
-  bottom: 90px;
-  right: 20px;
+  bottom: 9%;
+  right: 2%;
 }
 
 #new-book-form {
@@ -357,7 +373,8 @@ h1 {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+input[type="button"] {
   color: black;
   font-size: 16px;
   background-color: var(--c-light-1);
@@ -568,6 +585,13 @@ input:not(:placeholder-shown) ~ .placeholder {
 
   #logo {
     margin-left: 0rem;
+  }
+
+  #new-book-modal{
+    position: fixed;
+  bottom: 10%;
+  right: 6%;
+    
   }
 
   .info-container {
