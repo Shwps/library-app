@@ -142,7 +142,8 @@ table {
   --c-yellow-1: #ffbe0b;
   --c-green-1: #3b8026;
   --c-red-1: #e93232;
-  --filter-white: invert(100%) sepia(98%) saturate(232%) hue-rotate(180deg) brightness(113%) contrast(87%);
+  --filter-white: invert(100%) sepia(98%) saturate(232%) hue-rotate(180deg)
+    brightness(113%) contrast(87%);
 }
 
 body,
@@ -174,7 +175,7 @@ h1 {
 
 #add-tag {
   font-size: 16px;
-  color:var(--c-orange-1);
+  color: var(--c-orange-1);
   font-weight: 500;
   outline: none;
   border: solid 2px rgba(0, 0, 0, 0);
@@ -198,7 +199,7 @@ h1 {
 
 #toggle-tags {
   cursor: pointer;
-  filter:var(--filter-white);
+  filter: var(--filter-white);
   transition: 0.5s;
 }
 
@@ -238,7 +239,6 @@ h1 {
 
 .greater-container {
   background-color: var(--c-gray-1);
-  
 }
 
 .library-container {
@@ -259,26 +259,26 @@ h1 {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  display:grid;
+  display: grid;
   grid-template-columns: 5fr 1fr;
-  gap:0px;
+  gap: 0px;
 }
 
 .card::before {
   background: radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.09),
-      transparent 40%
-    );
-    border-radius: inherit;
-    content: "";
-    opacity: 0;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0px;
-    top: 0px;
-    transition: opacity 500ms;
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.09),
+    transparent 40%
+  );
+  border-radius: inherit;
+  content: "";
+  opacity: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  transition: opacity 500ms;
 }
 
 .card:hover::before {
@@ -286,7 +286,6 @@ h1 {
 }
 
 .info-container {
-  
 }
 
 .hide {
@@ -392,8 +391,8 @@ input[type="number"] {
 
 input:focus ~ .placeholder,
 input:not(:placeholder-shown) ~ .placeholder {
-  transform: translateY(-30px) translateX(0);font-size: 18px;
-  
+  transform: translateY(-30px) translateX(0);
+  font-size: 18px;
 }
 
 .placeholder {
@@ -449,10 +448,10 @@ input:not(:placeholder-shown) ~ .placeholder {
 
 .edit-btn {
   width: 25px;
-  margin-left:1em;
+  margin-left: 1em;
   height: auto;
   cursor: pointer;
-  filter:var(--filter-white);
+  filter: var(--filter-white);
 }
 
 .title {
@@ -499,7 +498,7 @@ input:not(:placeholder-shown) ~ .placeholder {
   width: 50px;
   height: 50px;
   transition: 0.5s;
-  filter:var(--filter-white);
+  filter: var(--filter-white);
 }
 
 #demo-btn {
@@ -508,13 +507,13 @@ input:not(:placeholder-shown) ~ .placeholder {
   right: 80px;
   z-index: 100;
   background: none;
-	color: inherit;
-	border: 4px solid var(--c-light-1);
+  color: inherit;
+  border: 4px solid var(--c-light-1);
   border-radius: 5px;
-	padding: 4px;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  padding: 4px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
   font-size: 2rem;
   font-weight: 600;
   transition: 0.5s;
@@ -575,8 +574,7 @@ input:not(:placeholder-shown) ~ .placeholder {
   transform: translateY(0);
 }
 
-@media screen and (max-width: 900px ) {
-
+@media screen and (max-width: 900px) {
   header {
     display: flex;
     flex-direction: column;
@@ -587,11 +585,10 @@ input:not(:placeholder-shown) ~ .placeholder {
     margin-left: 0rem;
   }
 
-  #new-book-modal{
+  #new-book-modal {
     position: fixed;
-  bottom: 10%;
-  right: 6%;
-    
+    bottom: 10%;
+    right: 6%;
   }
 
   .info-container {
@@ -603,5 +600,4 @@ input:not(:placeholder-shown) ~ .placeholder {
     gap: 1rem;
     justify-content: center;
   }
-  
 }
