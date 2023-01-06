@@ -307,6 +307,7 @@ input:not(:placeholder-shown) ~ .placeholder {
   font-size: 2rem;
   font-weight: 600;
   transition: 0.5s;
+  margin-right: 8px;
 }
 
 #new-book-btn:hover,

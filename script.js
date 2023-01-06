@@ -97,7 +97,7 @@ const userInterface = (() => {
     const edit = document.createElement("img");
     edit.classList.add("edit-btn");
     edit.src = "svg/close.svg";
-    edit.addEventListener("click", (e) => {
+    edit.addEventListener("click", () => {
       library.remove(book);
     });
     const title = document.createElement("div");
@@ -195,6 +195,7 @@ const userInterface = (() => {
     displayModal,
     exitBtn,
     form,
+    libraryContainer,
     modal,
     newBookBtn,
   };
