@@ -133,7 +133,8 @@ table {
 :root {
   --c-gray-1: #0a0a0a;
   --c-gray-2: #141414;
-  --c-gray-4: #292929;
+  --c-gray-3: #050505;
+  --c-gray-4: #424141;
   --c-light-1: #f1eeee;
   --c-blue-1: #3a86ff;
   --c-purple-1: #8338ec;
@@ -142,6 +143,7 @@ table {
   --c-yellow-1: #ffbe0b;
   --c-green-1: #3b8026;
   --c-red-1: #e93232;
+  --c-transparent-1:#05050500;
   --filter-white: invert(100%) sepia(98%) saturate(232%) hue-rotate(180deg)
     brightness(113%) contrast(87%);
 }
@@ -156,6 +158,17 @@ html {
 * {
   color: var(--c-light-1);
   font-family: Fira Sans;
+}
+
+a {
+  text-decoration: none;
+}
+
+footer{
+  padding: 1em;
+  background-image: linear-gradient(to top, var(--c-gray-3),var(--c-transparent-1));
+  color: var(--c-light-1);
+  text-align: center;
 }
 
 header {
@@ -173,6 +186,30 @@ h1 {
   font-size: 32px;
 }
 
+input[type="text"],
+input[type="number"],
+input[type="button"] {
+  color: black;
+  font-size: 16px;
+  background-color: var(--c-light-1);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  outline: none;
+  border: solid 2px rgba(0, 0, 0, 0);
+  border-radius: 5px;
+}
+
+input[type="number"] {
+  width: 160px;
+}
+
+input:focus ~ .placeholder,
+input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(0);
+  font-size: 18px;
+}
+
 #add-tag {
   font-size: 16px;
   color: var(--c-orange-1);
@@ -180,6 +217,16 @@ h1 {
   outline: none;
   border: solid 2px rgba(0, 0, 0, 0);
   border-radius: 5px;
+}
+
+#footer-fine-print {
+  font-size: 12px;
+  color: var(--c-gray-4);
+  margin-top:4px;
+}
+
+#footer-fine-print a {
+  color: var(--c-gray-4);
 }
 
 #search-bar {
@@ -203,7 +250,76 @@ h1 {
   transition: 0.5s;
 }
 
-#tag-input {
+#new-book-modal {
+  background-color: var(--c-gray-1);
+  width: 300px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 10px;
+  z-index: 100;
+  border: solid 3px var(--c-gray-2);
+  box-shadow: 1px 1px 5px 2px var(--c-gray-3);
+  position: fixed;
+  bottom: 9%;
+  right: 2%;
+}
+
+#new-book-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+#read-label {
+  color: var(--c-yellow-1);
+  font-weight: 500;
+}
+
+#new-book-btn {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  transition: 0.5s;
+  filter: var(--filter-white);
+}
+
+#demo-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 80px;
+  z-index: 100;
+  background: none;
+  color: inherit;
+  border: 4px solid var(--c-light-1);
+  border-radius: 5px;
+  padding: 4px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-size: 2rem;
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+#new-book-btn:hover,
+#demo-btn:hover {
+  transform: scale(1.1);
+}
+
+#exit-btn:hover {
+  background-color: var(--c-red-1);
+}
+
+#add-book-btn:hover {
+  background-color: var(--c-green-1);
 }
 
 .tags-wrapper {
@@ -285,9 +401,6 @@ h1 {
   opacity: 1;
 }
 
-.info-container {
-}
-
 .hide {
   display: none;
 }
@@ -324,30 +437,6 @@ h1 {
   align-self: start;
 }
 
-#new-book-modal {
-  background-color: var(--c-gray-2);
-  width: 300px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border-radius: 10px;
-  z-index: 100;
-  border: solid 3px var(--c-gray-4);
-  box-shadow: 1px 1px 5px 2px var(--c-gray-1);
-  position: fixed;
-  bottom: 9%;
-  right: 2%;
-}
-
-#new-book-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-}
-
 .input-field {
   display: grid;
   position: relative;
@@ -364,35 +453,6 @@ h1 {
   align-items: center;
   background-color: var(--c-light-1);
   border-radius: 5px;
-}
-
-#read-label {
-  color: var(--c-yellow-1);
-  font-weight: 500;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="button"] {
-  color: black;
-  font-size: 16px;
-  background-color: var(--c-light-1);
-  box-sizing: border-box;
-  width: 100%;
-  padding: 8px;
-  outline: none;
-  border: solid 2px rgba(0, 0, 0, 0);
-  border-radius: 5px;
-}
-
-input[type="number"] {
-  width: 160px;
-}
-
-input:focus ~ .placeholder,
-input:not(:placeholder-shown) ~ .placeholder {
-  transform: translateY(-30px) translateX(0);
-  font-size: 18px;
 }
 
 .placeholder {
@@ -489,41 +549,6 @@ input:not(:placeholder-shown) ~ .placeholder {
   color: var(--c-orange-1);
 }
 
-#new-book-btn {
-  cursor: pointer;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
-  width: 50px;
-  height: 50px;
-  transition: 0.5s;
-  filter: var(--filter-white);
-}
-
-#demo-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 80px;
-  z-index: 100;
-  background: none;
-  color: inherit;
-  border: 4px solid var(--c-light-1);
-  border-radius: 5px;
-  padding: 4px;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  font-size: 2rem;
-  font-weight: 600;
-  transition: 0.5s;
-}
-
-#new-book-btn:hover,
-#demo-btn:hover {
-  transform: scale(1.1);
-}
-
 .form-buttons {
   display: flex;
   gap: 10px;
@@ -559,14 +584,6 @@ input:not(:placeholder-shown) ~ .placeholder {
   color: var(--c-gray-1);
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
-}
-
-#exit-btn:hover {
-  background-color: var(--c-red-1);
-}
-
-#add-book-btn:hover {
-  background-color: var(--c-green-1);
 }
 
 .btn:active {

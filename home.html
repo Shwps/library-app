@@ -1,65 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <title>ARKIV</title>
-    <link rel="icon" href="/img/Arkiv logo no text.png">
-</head>
-<body>
+    <link rel="icon" href="/img/Arkiv logo no text.png" />
+  </head>
+  <body>
     <div class="greater-container">
       <header>
         <div id="logo">
-          <img src="img/Arkiv v2.png" width="200px" alt="">
+          <img src="img/Arkiv v2.png" width="200px" alt="" />
         </div>
-          <input type="text" id="search-bar" placeholder="Search">
-          
-        <div class="tags-wrapper"><div class="search-tags"></div><img id="toggle-tags"src="svg/chevron-down.svg" width="64px" alt="" srcset=""></div>
+        <input type="text" id="search-bar" placeholder="Search" />
+
+        <div class="tags-wrapper">
+          <div class="search-tags"></div>
+          <img
+            id="toggle-tags"
+            src="svg/chevron-down.svg"
+            width="64px"
+            alt=""
+            srcset=""
+          />
+        </div>
       </header>
       <main>
-            <div class="library-container">
-            </div>
-            <button id="demo-btn" class="">DEMO</button>
-                <img src="img/plus.png" width="48px" alt="" id="new-book-btn">
+        <div class="library-container"></div>
+        <button id="demo-btn" class="">DEMO</button>
+        <img src="img/plus.png" width="48px" alt="" id="new-book-btn" />
       </main>
     </div>
-        <div id="new-book-modal" style="display:none;">
-            <form id="new-book-form">
-              <h1>NEW BOOK</h1>
-            
-              <div class="input-field">
-                
-                <input type="text" id="new-book-title" placeholder=" "/>
-                <label for="new-book-title" class="placeholder title-label">Title</label>
-              </div>
-              <div class="input-field">
-                  <input type="text" id="new-book-author" placeholder=" "/>
-                  <label for="new-book-author" class="placeholder author-label">Author</label>
-              </div>
-              <div class="input-field year-and-read">
-                  <input type="number" id="new-book-year" placeholder=" "/>
-                  <label for="new-book-year" class="placeholder year-label">Year</label>
-                  <div class="new-book-read-container"><label for="new-book-read" id="read-label">Read</label><input type="checkbox" id="new-book-read" value="true" /></div>
-              </div>
-              
-              <div class="tags-container">
-                <div class="tags-input-wrapper input-field">
-                  <input type="text" id="tag-input" placeholder=" "/>
-                  <label for="tag-input" class="placeholder tags-label">Tags</label>
-                  <button id="add-tag">Add</button>
-                </div>
-                <div class="tags">
-                </div>
-              </div>
-              
-              <div class="form-buttons">
-                <button type="reset" id="add-book-btn" class="btn">Add</button>
-                <button type="button" id="exit-btn" class="btn">Cancel</button>
-            </div>
-            </form>
+    <div id="new-book-modal" style="display: none">
+      <form id="new-book-form">
+        <h1>NEW BOOK</h1>
+
+        <div class="input-field">
+          <input type="text" id="new-book-title" placeholder=" " />
+          <label for="new-book-title" class="placeholder title-label"
+            >Title</label
+          >
+        </div>
+        <div class="input-field">
+          <input type="text" id="new-book-author" placeholder=" " />
+          <label for="new-book-author" class="placeholder author-label"
+            >Author</label
+          >
+        </div>
+        <div class="input-field year-and-read">
+          <input type="number" id="new-book-year" placeholder=" " />
+          <label for="new-book-year" class="placeholder year-label">Year</label>
+          <div class="new-book-read-container">
+            <label for="new-book-read" id="read-label">Read</label
+            ><input type="checkbox" id="new-book-read" value="true" />
           </div>
+        </div>
+
+        <div class="tags-container">
+          <div class="tags-input-wrapper input-field">
+            <input type="text" id="tag-input" placeholder=" " />
+            <label for="tag-input" class="placeholder tags-label">Tags</label>
+            <button id="add-tag">Add</button>
+          </div>
+          <div class="tags"></div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="reset" id="add-book-btn" class="btn">Add</button>
+          <button type="button" id="exit-btn" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <footer>
+      <a href="https://github.com/shwps">github.com/shwps</a>
+      <p id="footer-fine-print">William Ekelund 2023</p>
+      <p id="footer-fine-print">SVGs from <a href="https://materialdesignicons.com/">materialdesignicons.com</a></p>
+    </footer>
   </body>
 </html>
